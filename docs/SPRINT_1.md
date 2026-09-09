@@ -119,8 +119,3 @@ erDiagram
         int quantity
     }
 ```
-
-**Design notes for the write-up (worth restating in your own words for grading):**
-- `CART` is split from `USERS` as its own entity (rather than a `cart_id` column on `USERS`) so cart lifecycle — creation, clearing after checkout — is independent of the user record.
-- `unit_price` is duplicated onto `ORDER_ITEMS` rather than always joining back to `LISTINGS.price`, since a listing's price can change or the listing can later be deleted, but historical orders must retain the price actually paid.
-- `is_available` on `LISTINGS` models single-copy inventory (no `stock_quantity` int, since used books are typically one-of-a-kind).
